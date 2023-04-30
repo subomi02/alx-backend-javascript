@@ -1,1 +1,1 @@
-export default ( i,  e=89, t=19) => i+e+t;
+export default (initialNumber + expansion1989 = 89 + expansion2019 = 19)
