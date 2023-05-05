@@ -1,16 +1,12 @@
 export default function iterateThroughObject(reportWithIterator) {
-  let result = '';
+  const employeeIterator = reportWithIterator();
+  let result = "";
+  let current = employeeIterator.next();
 
-  let employeeIterator = reportWithIterator();
-  let employee = employeeIterator.next();
-
-  while (!employee.done) {
-    result += `${employee.value}|`;
-    employee = employeeIterator.next();
+  while (!current.done) {
+    result += `${current.value}|`;
+    current = employeeIterator.next();
   }
 
-  // Remove the trailing |
-  result = result.slice(0, -1);
-
-  return result;
+  return result.slice(0, -1);
 }
