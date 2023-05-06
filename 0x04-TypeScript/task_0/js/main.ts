@@ -4,6 +4,8 @@ export interface Student {
   age: number;
   location: string;
 }
+
+// Creating student objects
 const studentA: Student = {
   firstName: "Harry",
   lastName: "Yoon",
@@ -17,10 +19,13 @@ const studentB: Student = {
   location: "Lodz, Poland",
 };
 
+// Creating a list of students
 const studentsList: Array<Student> = [
   studentA,
   studentB,
 ];
+
+// Defining the CSS styles for the table
 const styleSheet = `
   html {
     margin: 0;
@@ -60,14 +65,18 @@ const styleSheet = `
  * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  */
 export const displayStudents = (students: Array<Student>): void => {
+  // Creating the table element
   const table = document.createElement('table');
   const tableHead = document.createElement('thead');
   const headRow = document.createElement('tr');
   const tableBody = document.createElement('tbody');
-  headRow.insertAdjacentHTML('beforeend', '<td>FirstName</td');
-  headRow.insertAdjacentHTML('beforeend', '<td>Location</td');
+
+  // Creating table headers
+  headRow.insertAdjacentHTML('beforeend', '<td>FirstName</td>');
+  headRow.insertAdjacentHTML('beforeend', '<td>Location</td>');
   tableHead.insertAdjacentElement('beforeend', headRow);
 
+  // Creating table rows for each student
   for (const student of students) {
     const bodyRow = document.createElement('tr');
     bodyRow.insertAdjacentHTML('beforeend', `<td>${student.firstName}</td>`);
@@ -75,13 +84,23 @@ export const displayStudents = (students: Array<Student>): void => {
     tableBody.insertAdjacentElement('beforeend', bodyRow);
   }
 
+  // Assembling the table structure
   table.insertAdjacentElement('beforeend', tableHead);
   table.insertAdjacentElement('beforeend', tableBody);
+
+  // Appending the table to the document body
   document.body.insertAdjacentElement('beforeend', table);
 };
 
+// Calling the displayStudents function with the studentsList array
 displayStudents(studentsList);
+
+// Creating a <style> element and adding the CSS styles to it
 const styleSheetElement = document.createElement('style');
 styleSheetElement.innerHTML = styleSheet;
+
+// Adding the <style> element to the document head
 document.head.insertAdjacentElement('beforeend', styleSheetElement);
+
+// Setting the document title
 document.title = 'Task 0';
